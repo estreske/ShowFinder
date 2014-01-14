@@ -12,6 +12,9 @@ gem 'rspec-rails'
 gem 'geocoder'
 gem 'pry'
 gem 'pry-rails'
+gem 'devise'
+gem 'foundation-rails'
+gem 'compass'
 
 
 # Gems used only for assets and not required

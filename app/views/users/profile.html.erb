@@ -1,0 +1,24 @@
+
+<h1><%= current_user.name %>'s Account</h1>
+<%= current_user.email %>
+<h3>My Bands:</h3>
+<ul>
+<% current_user.bands.each do |band| %>
+<li><%= band.name %></li>
+<% end %>
+</ul>
+
+<h3>My Shows:</h3>
+<ul>
+<% current_user.shows.each do |show| %>
+<li><%= show.date.to_s.gsub(/00:00:00 UTC/, "") %> <%= show.time %> <%= show.venue.name %></li>
+<% end %>
+</ul>
+
+<form action="/bands/new">
+<button class="small button">Add a Band to my Profile</button>
+</form>
+
+<form action="/shows/new">
+<button class="small button">Add a Show</button>
+</form>

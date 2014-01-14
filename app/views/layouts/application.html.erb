@@ -1,14 +1,50 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Showfinder</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+
+  </head>
+
+  <body>
+    
+
+    <nav class="top-bar" data-top-bar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">ShowFinder</a></h1>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="">
+        <a href="/profile">Account</a>
+      </li>
+        <% if user_signed_in? %>
+      <li>
+        <form action="/users/sign_out" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit" class="small button">Sign Out</button>
+  </form>
+</li>
+      <% else %>
+</ul>
+<% end %>
+    
+
+  </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

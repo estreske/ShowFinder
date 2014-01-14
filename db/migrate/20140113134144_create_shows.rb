@@ -1,7 +1,7 @@
 class CreateShows < ActiveRecord::Migration
   def change
     create_table :shows do |t|
-      t.date :date
+      t.datetime :date
       t.string :time
       t.integer :venue_id
       t.integer :band_id
