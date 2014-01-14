@@ -14,5 +14,7 @@ Showfinder::Application.routes.draw do
   resources :venues
 
   resources :shows
+
+  resources :requests
   
 end

@@ -17,8 +17,10 @@ u1 = User.create(name: "Fake User", password: "fakepassword", password_confirmat
 
 b = Band.create(name: "Shoeless Revolution", genre: "Rock/Jam", hometown_city: "Minneapolis", hometown_state: "MN", image_url: "http://bourbontheatre.com/wp-content/uploads/2010/11/shoelessrevolution.jpg", website: "http://www.shoelessrevolution.com", user: u)
 
+b2 = Band.create(name: "Blah", genre: "Rock", hometown_city: "Chicago, IL", hometown_state: "IL", website: "http://www.google.com", user: u1)
+
 v = Venue.create(name: "Popcorn Tavern", street: "308 4th St. S", city: "La Crosse", state: "WI", zipcode: 54601)
 
 s = Show.create(date: "2014/01/18", time: "10 pm", slots_open: 1, venue: v, band: b)
 
-r = Request.create(requester: u1, show: s, owner: u)
+r = Request.create(user: u, show: s, band: b2)

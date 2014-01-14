@@ -1,5 +1,77 @@
-<div class="large-11 columns large-offset-1 columns">
+<script type="text/javascript">
+      function initialize() {
+
+        var mapOptions = {
+          center: new google.maps.LatLng(<%= Geocoder.search(@show.find_address(@show))[0].latitude %>,<%= Geocoder.search(@show.find_address(@show))[0].longitude %>),
+          zoom: 15
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+
+
+        var myLatlng = new google.maps.LatLng(<%= Geocoder.search(@show.find_address(@show))[0].latitude %>,<%= Geocoder.search(@show.find_address(@show))[0].longitude %>);
+
+        var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h3 id="firstHeading" class="firstHeading">Event Information</h1>'+
+      '<div id="bodyContent">'+
+      '<p>Hosted by: <b><%= @show.band.name %></b></p>'+
+      '<p>Venue: <b><%= @show.venue.name %> in <%= @show.venue.city %>, <%= @show.venue.state %></b><br><br><a href="/shows/<%= @show.id %>">View More Information</a>'+
+      '</p>'+
+      '</div>'+
+      '</div>';
+
+      var infowindow = new google.maps.InfoWindow({
+      content: contentString
+  });
+
+        var marker = new google.maps.Marker({
+    position: myLatlng,
+    map: map,
+    title:"Show Information"
+});
+
+        google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map,marker);
+  });
+
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+      
+    </script>
+
+
 <h1>Show Information</h1>
+<hr>
+<div class="large-4 columns" id="show_info">
+<h3><%= @show.date %></h3>
+<h3><%= @show.time %></h3>
+<h3>Slots Open: <%= @show.slots_open %></h3>
 <h3>Hosted by: <%= @show.band.name %></h3>
+<br>
 <img src="<%= @show.band.image_url %>" />
 </div>
+
+
+  <div class="large-4 columns">
+  <div id="map-canvas" style="height: 400px;width: 400px;margin: 0 auto;">
+  </div>
+</div>
+
+
+<div class="large-4 columns" id="venue_info">
+<h3>Venue:</h3>
+<br>
+<p><%= @show.venue.name %></p>
+<p><%= @show.venue.street %></p>
+<p><%= @show.venue.city %>, <%= @show.venue.state %> <%= @show.venue.zipcode %></p>
+<br>
+<br>
+<form action="/requests/new">
+  <input type="hidden" name="show_id" value="<%= @show.id %>">
+  <button class="small button">Submit Request to Join the Show</button>
+</form>
+</div>
+
+

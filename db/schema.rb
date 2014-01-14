@@ -26,11 +26,11 @@ ActiveRecord::Schema.define(:version => 20140114170342) do
   end
 
   create_table "requests", :force => true do |t|
-    t.integer  "requester_id"
+    t.integer  "user_id"
     t.integer  "show_id"
-    t.integer  "owner_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "band_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "shows", :force => true do |t|
