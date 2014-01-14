@@ -1,12 +1,21 @@
 
 <h1><%= current_user.name %>'s Account</h1>
-<%= current_user.email %>
+<a href="/users/edit">Edit Account Information</a>
 <hr>
 <div class="large-4 columns">
 <h3>My Bands:</h3>
 <ul>
 <% current_user.bands.each do |band| %>
-<li><%= band.name %></li>
+<li><%= band.name %>
+<form action="/bands/<%= band.id %>/edit">
+  <button class="tiny button">Edit Band</button>
+</form>
+
+<form action="/bands/<%= band.id %>/" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <button class="tiny button">Delete Band</button>
+</form>
+</li>
 <% end %>
 </ul>
 <form action="/bands/new">

@@ -12,4 +12,12 @@ class BandsController < ApplicationController
     redirect_to '/profile'
 
   end
+
+  def edit 
+    @band = Band.find(params[:id])
+  end
+
+  def update
+
+  end
 end
