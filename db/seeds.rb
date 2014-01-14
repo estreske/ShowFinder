@@ -13,8 +13,12 @@ Show.delete_all
 
 u = User.create(name: "Eric Streske", password: "webmaster", password_confirmation: "webmaster", email: "estreske@gmail.com")
 
+u1 = User.create(name: "Fake User", password: "fakepassword", password_confirmation: "fakepassword", email: "fakeuser@gmail.com")
+
 b = Band.create(name: "Shoeless Revolution", genre: "Rock/Jam", hometown_city: "Minneapolis", hometown_state: "MN", image_url: "http://bourbontheatre.com/wp-content/uploads/2010/11/shoelessrevolution.jpg", website: "http://www.shoelessrevolution.com", user: u)
 
 v = Venue.create(name: "Popcorn Tavern", street: "308 4th St. S", city: "La Crosse", state: "WI", zipcode: 54601)
 
 s = Show.create(date: "2014/01/18", time: "10 pm", slots_open: 1, venue: v, band: b)
+
+r = Request.create(requester: u1, show: s, owner: u)

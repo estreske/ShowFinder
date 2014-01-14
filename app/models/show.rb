@@ -3,5 +3,9 @@ class Show < ActiveRecord::Base
 
   belongs_to :venue
   belongs_to :band
+  has_many :requests
 
+  def find_address(show)
+    return "#{show.venue.street}, #{show.venue.city}, #{show.venue.state}"
+  end
 end

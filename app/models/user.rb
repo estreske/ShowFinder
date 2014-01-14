@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
 
   has_many :bands
   has_many :shows, through: :bands
+  has_many :requests
 end
