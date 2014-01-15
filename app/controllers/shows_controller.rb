@@ -23,7 +23,41 @@ class ShowsController < ApplicationController
 
   def show
     @show = Show.find(params[:id])
+    @hash = Gmaps4rails.build_markers(@show) do |show, marker|
+      marker.lat Geocoder.search(show.find_address(show))[0].latitude
+      marker.lng Geocoder.search(show.find_address(show))[0].longitude
+    end
 
+  end
+
+  def edit 
+    @show = Show.find(params[:id])
+  end
+
+  def update
+    @show = Show.find(params[:id])
+    band = Band.find(params[:band])
+    venue = Venue.find(@show.venue.id)
+    venue.name = params[:venue_name]
+    venue.street = params[:venue_street]
+    venue.city = params[:venue_city]
+    venue.state = params[:venue_state]
+    venue.zipcode = params[:venue_zipcode]
+    venue.save
+    @show.date = params[:date]
+    @show.time = params[:time]
+    @show.slots_open = params[:slots_open]
+    @show.band = band
+    @show.venue = venue
+    @show.save!
+
+    redirect_to '/profile'
+  end
+
+  def destroy
+    show = Show.find(params[:id])
+    show.destroy
+    redirect_to '/profile'
   end
 
 end
