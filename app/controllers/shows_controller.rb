@@ -12,11 +12,18 @@ class ShowsController < ApplicationController
 
   def index
     @shows = Show.all
+    @hash = Gmaps4rails.build_markers(@shows) do |show, marker|
+      marker.lat Geocoder.search(show.find_address(show))[0].latitude
+      marker.lng Geocoder.search(show.find_address(show))[0].longitude
+      arg_infowindow = show.get_info_window_arg(show)
+      marker.infowindow arg_infowindow
+    end
 
   end
 
   def show
     @show = Show.find(params[:id])
+
   end
 
 end

@@ -15,7 +15,7 @@
   text-align: center;
 }
 
-#map-canvas {
+#map {
   margin: 0 auto;
 }
 
@@ -29,6 +29,6 @@
   display:inline;
 }
 
-#map-canvas img{
+#map img{
   max-width: inherit;
 }

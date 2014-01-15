@@ -15,6 +15,8 @@ gem 'pry-rails'
 gem 'devise'
 gem 'foundation-rails'
 gem 'compass'
+gem 'gmaps4rails'
+gem 'underscore-rails'
 
 
 # Gems used only for assets and not required
