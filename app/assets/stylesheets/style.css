@@ -14,3 +14,21 @@
 #band_info {
   text-align: center;
 }
+
+#map-canvas {
+  margin: 0 auto;
+}
+
+#index_background {
+  background-image: url("http://images5.alphacoders.com/349/349660.jpg");
+  height: 100%;
+  background-size: cover;
+}
+
+#profile_bands form {
+  display:inline;
+}
+
+#map-canvas img{
+  max-width: inherit;
+}

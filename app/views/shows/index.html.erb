@@ -9,6 +9,7 @@
             mapOptions);
 
         <% @shows.each do |show| %>
+        
 
         var myLatlng = new google.maps.LatLng(<%= Geocoder.search(show.find_address(show))[0].latitude %>,<%= Geocoder.search(show.find_address(show))[0].longitude %>);
 
@@ -38,7 +39,12 @@
   });
 
       }
-      google.maps.event.addDomListener(window, 'load', initialize);
       <% end %>
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+      
     </script>
+
+    <h1>All Shows</h1>
+    <hr>
 <div id="map-canvas" style="height: 500px;width: 800px">

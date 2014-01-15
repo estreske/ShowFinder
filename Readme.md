@@ -8,7 +8,7 @@ ShowFinder uses the Google Maps API v3 and the Geocoder Ruby gem, and is built i
 
 ##Heroku
 
-ShowFinder will be hosted on Heroku and the URL will be coming soon.  
+ShowFinder will be hosted on Heroku at the URL http://showfinder.herokuapp.com.
 
 ##Contact
 

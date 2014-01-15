@@ -18,6 +18,20 @@ class BandsController < ApplicationController
   end
 
   def update
+    band = Band.find(params[:id])
+    band.name = params[:name]
+    band.genre = params[:genre]
+    band.hometown_city = params[:hometown_city]
+    band.hometown_state = params[:hometown_state]
+    band.image_url = params[:image_url]
+    band.website = params[:website]
+    band.save!
+    redirect_to '/profile'
+  end
 
+  def destroy
+    band = Band.find(params[:id])
+    band.destroy
+    redirect_to '/profile'
   end
 end

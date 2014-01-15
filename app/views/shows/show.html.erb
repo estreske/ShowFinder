@@ -68,10 +68,15 @@
 <p><%= @show.venue.city %>, <%= @show.venue.state %> <%= @show.venue.zipcode %></p>
 <br>
 <br>
+<% if user_signed_in? %>
 <form action="/requests/new">
   <input type="hidden" name="show_id" value="<%= @show.id %>">
   <button class="small button">Submit Request to Join the Show</button>
 </form>
+<% else %>
+<br>
+<p>Please sign in to send a request for this show.</p>
+<% end %>
 </div>
 
 
