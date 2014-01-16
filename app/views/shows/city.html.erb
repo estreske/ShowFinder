@@ -12,8 +12,30 @@
   </script>
 
 <div class="white_title">
- <h1>All Shows</h1>
+<h1>Shows in <%= @city %></h1>
 </div>
 
 <div class="white_bg">
-  <div class= "large-8 large-centered columns" id="map" style='width: 800px; height: 400px;'></div></div>
+
+<div class="large-4 columns">
+<div id="map" style="height: 400px;width: 400px;margin: 0 auto;">
+  </div>
+</div>
+
+<div class="large-4 columns" id="search_city_shows">
+  <% @shows.each do |show| %>
+    <h4><a href="/shows/<%= show.id %>/"><%= show.date %> <%= show.venue.name %></a></h4>
+  <% end %>
+</div>
+<div class="large-4 columns" >
+  <h4>ShowFinder Bands from <%= @city %></h4>
+    <% @city_bands.each do |band| %>
+    <ul>
+      <li><%= band.name %> | 
+      <a href="<%= band.website %>">Band Website</a></li>
+    </ul>
+    <% end %>
+</div>
+
+
+</div>

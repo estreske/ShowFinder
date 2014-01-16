@@ -12,6 +12,8 @@ Showfinder::Application.routes.draw do
 
   get '/welcome' => "home#welcome", as: :welcome
 
+  get '/shows/city' => "shows#city"
+
   resources :bands
 
   resources :venues

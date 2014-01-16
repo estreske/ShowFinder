@@ -17,14 +17,36 @@ class ShowsController < ApplicationController
       marker.lng Geocoder.search(show.find_address(show))[0].longitude
       arg_infowindow = show.get_info_window_arg(show)
       marker.infowindow arg_infowindow
+      @center_lat = 38.5111
+      @center_long = -96.8005
+      @zoom = 4
     end
+  end
 
+  def city
+    @venues = Venue.where(city: params[:search_city], state: params[:search_state])
+      @shows = [] 
+        @venues.each do |venue|
+          show = Show.where(venue_id: venue.id)
+          @shows << show
+          @shows.flatten!
+        end
+      @city_bands = Band.where(hometown_city: params[:search_city], hometown_state: params[:search_state])
+      @city = "#{params[:search_city]}, #{params[:search_state]}"
+      @center_lat = Geocoder.search(@city)[0].latitude
+      @center_long = Geocoder.search(@city)[0].longitude
+      @zoom = 10
+      @hash = Gmaps4rails.build_markers(@shows) do |show, marker|
+
+        marker.lat Geocoder.search(show.find_address(show))[0].latitude
+        marker.lng Geocoder.search(show.find_address(show))[0].longitude
+      end
   end
 
   def show
     @show = Show.find(params[:id])
       @hash = Gmaps4rails.build_markers(@show) do |show, marker|
-        
+
         marker.lat Geocoder.search(show.find_address(show))[0].latitude
         marker.lng Geocoder.search(show.find_address(show))[0].longitude
       end

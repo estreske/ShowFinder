@@ -38,9 +38,9 @@
 <div class="large-4 columns" id="venue_info">
 <h3>Venue:</h3>
 <br>
-<p><%= @show.venue.name %></p>
-<p><%= @show.venue.street %></p>
-<p><%= @show.venue.city %>, <%= @show.venue.state %> <%= @show.venue.zipcode %></p>
+<h4><%= @show.venue.name %></h4>
+<h4><%= @show.venue.street %></h4>
+<h4><%= @show.venue.city %>, <%= @show.venue.state %> <%= @show.venue.zipcode %></h4>
 <br>
 <br>
 <% if user_signed_in? %>
