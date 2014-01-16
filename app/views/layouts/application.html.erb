@@ -23,9 +23,41 @@
   </head>
 
   <body id="index_background">
-    
 
-    <nav class="top-bar" data-top-bar>
+    <div class="off-canvas-wrap">
+  <div class="inner-wrap">
+    <nav class="tab-bar show-for-small">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+      </section>
+
+      <section class="right tab-bar-section">
+        <% if user_signed_in? %>
+        <a href="/welcome"><h1 class="title">ShowFinder</h1></a>
+        <% else %>
+        <a href="/"><h1 class="title">ShowFinder</h1></a>
+        <% end %>
+      </section>
+
+    </nav>
+
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+
+        <li><label>ShowFinder</label></li>
+        <li><a href="/shows">All Shows</a></li>
+
+        <% if user_signed_in? %>
+        <li><a href="/profile">My Account</a></li>
+
+        <% else %>
+        <li><a href="/users/sign_in">My Account</a></li>
+        <% end %>
+      </ul>
+    </aside>
+    <section class="main-section">
+
+    <nav class="top-bar show-for-medium-up" data-top-bar>
   <ul class="title-area">
     <li class="name">
       <h1>
@@ -84,8 +116,23 @@
         
 
     <%= yield %>
-    <%= javascript_include_tag "application" %>
+    
+
+
+  
+
+  
+
+  </section>
+
+    <a class="exit-off-canvas"></a>
+
+
+</div>
+</div>
+<%= javascript_include_tag "application" %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
   </body>
 </html>

@@ -108,3 +108,16 @@
 .f-dropdown li:hover {
   background: none;
 }
+
+.f-dropdown {
+  border: none;
+}
+
+.left-off-canvas-menu {
+  height: 1000px;
+}
+
+.off-canvas-wrap {
+  height: 100%;
+}
+
