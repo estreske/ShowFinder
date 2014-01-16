@@ -3,12 +3,14 @@ Showfinder::Application.routes.draw do
 
   devise_scope :user do
     get "/sign_out" => "devise/sessions#destroy"
-    
+
   end
 
   root :to => "home#index"
 
   get '/profile' => "users#profile", as: :user_profile
+
+  get '/welcome' => "home#welcome", as: :welcome
 
   resources :bands
 
