@@ -1,14 +1,49 @@
 #ShowFinder
 
-Showfinder is a Rails app designed and developed by Eric Streske.  The concept of the site is to assist touring musicians in booking shows in markets/cities where they are relatively unknown.  Users can input their shows into the ShowFinder database and other users can browse those shows and submit a request to be put on the bill.  As a former touring musician who has done tour booking, I understand how frustrating it can be to find shows in cities where you have never been.  I hope that ShowFinder can foster relationships between touring acts and lead to a wider variety of opportunities for acts that are booking tours without the use of an agent or manager.  
+Showfinder is a Rails app designed to make tour booking without an agent so much easier by allowing bands to network together through show sharing.
 
-##Gems and APIs
+![](./doc/screenshots/main_resized.png)
 
-ShowFinder uses the Google Maps API v3 and the Geocoder Ruby gem, and is built in Rails 3.2.16.  
+##Gems and APIs Used
 
-##Heroku
+- Gmap4Rails
+- Geocoder
 
-ShowFinder will be hosted on Heroku at the URL http://showfinder.herokuapp.com.
+
+##Code Snippets
+This is the code used to render a map centered on the United States with markers for each show in my database.  
+
+In my view: 
+
+```
+<script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry" type="text/javascript"></script>
+
+<script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
+
+ <script type="text/javascript">
+   window.onload=function(){
+        handler = Gmaps.build('Google', { markers: { clusterer: {gridSize: 40,
+            maxZoom: 1,}}});
+        handler.buildMap({ provider: { center: new google.maps.LatLng(38.5111,-96.8005), zoom: 4  }, internal: {id: 'map'}}, function(){
+          markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        });
+      };
+  </script>
+```
+
+In my controller: 
+
+```
+def show
+    @show = Show.find(params[:id])
+      @hash = Gmaps4rails.build_markers(@show) do |show, marker|
+        
+        marker.lat Geocoder.search(show.find_address(show))[0].latitude
+        marker.lng Geocoder.search(show.find_address(show))[0].longitude
+      end
+  end
+  
+```
 
 ##Contact
 
