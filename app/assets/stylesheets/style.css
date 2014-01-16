@@ -97,3 +97,14 @@
   color: #008CBA;
 }
 
+#hover1 {
+  padding: 20px;
+}
+
+#hover1 input {
+  margin-bottom: 10px;
+}
+
+.f-dropdown li:hover {
+  background: none;
+}
