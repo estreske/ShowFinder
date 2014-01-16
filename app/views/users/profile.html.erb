@@ -35,7 +35,6 @@
 
 <div class="large-4 columns">
   <h3>My Requests:</h3>
-  
   <% @requests.each do |request| %>
   <ul>
     <li>Date: <%= request.show.date %></li>
@@ -43,6 +42,8 @@
     <li>Band Requesting: <%= request.band.name %></li>
     <li><a href="<%= request.band.website %>">Band Website</a></li>
     <li>Contact: <a href="mailto:<%= request.band.user.email %>"><%= request.band.user.name %></a></li>
+
+    <li><h3><%= link_to 'Remove Request', request, method: :delete, data: { confirm: 'Are you sure you want to remove this request from your profile?  Please make sure to contact the requesting user before removing!' } %></h3></li>
   </ul>
   <% end %>
 </div>

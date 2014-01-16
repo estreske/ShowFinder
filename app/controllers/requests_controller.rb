@@ -12,4 +12,10 @@ class RequestsController < ApplicationController
     Request.create(show: show, band: band, user: user)
     redirect_to "/shows/#{show_id}"
   end
+
+  def destroy
+    request = Request.find(params[:id])
+    request.destroy
+    redirect_to '/profile'
+  end
 end
