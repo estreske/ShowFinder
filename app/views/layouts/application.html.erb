@@ -40,17 +40,32 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <% if user_signed_in? %>
+
     <ul class="right">
       <li><a href="/shows/">All Shows</a></li>
 
       <li class="has-dropdown">
-    <a href="#" data-dropdown="hover1" data-options="is_hover:true">Account</a>
+    <a href="#" data-dropdown="hover1" data-options="is_hover:true">Search by City/State</a>
 
       <ul id="hover1" class="f-dropdown" data-dropdown-content>
+        <li>
+          <form action="/shows">
+            <input type="text" name="search_city" placeholder="City">
+            <input type="text" name="search_state" placeholder="State">
+            <button class="tiny button">Search</button>
+          </form>
+        </li>
+        </ul>
+
+
+      <li class="has-dropdown">
+    <a href="#" data-dropdown="hover2" data-options="is_hover:true">Account</a>
+
+      <ul id="hover2" class="f-dropdown" data-dropdown-content>
         <li><a href="/profile">Profile</a></li>
         <li><a href="/sign_out">Sign Out</a></li>
       </ul>
-
+</ul>
 
       <% else %>
       <ul class="right">

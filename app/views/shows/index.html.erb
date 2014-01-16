@@ -7,8 +7,6 @@
             maxZoom: 1,}}});
         handler.buildMap({ provider: { center: new google.maps.LatLng(38.5111,-96.8005), zoom: 4  }, internal: {id: 'map'}}, function(){
           markers = handler.addMarkers(<%= raw @hash.to_json %>);
-          // handler.bounds.extendWith(markers);
-          // handler.fitMapToBounds();
         });
       };
   </script>
