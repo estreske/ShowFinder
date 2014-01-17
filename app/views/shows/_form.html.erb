@@ -2,7 +2,11 @@
   <%= f.text_field :date, placeholder: "Date ex. 2014-01-01" %>
   <%= f.text_field :time, placeholder: "Time" %>
   <%= f.number_field :slots_open, placeholder: "Number of Slots Open" %>
+  <% if @show.id %>
+  <%= collection_select(:band, :band_id, @bands, :id, :name, {:selected => @show_band}) %>
+  <% else %>
   <%= collection_select(:band, :band_id, @bands, :id, :name) %>
+  <% end %>
   <%= form_for(@venue) do |f| %>
   <%= f.text_field :name, placeholder: "Venue Name" %>
   <%= f.text_field :street, placeholder: "Venue Street" %>

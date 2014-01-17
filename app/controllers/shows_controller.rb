@@ -59,6 +59,7 @@ class ShowsController < ApplicationController
     @show = Show.find(params[:id])
     @bands = Band.where(user_id: current_user.id)
     @venue = Venue.find(@show.venue.id)
+    @show_band = [@show.band.id]
   end
 
   def update
