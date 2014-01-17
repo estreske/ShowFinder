@@ -15,8 +15,16 @@
   text-align: center;
 }
 
-#map {
+#map_small {
   margin: 0 auto;
+  height: 400px;
+  width: 400px;
+}
+
+#map_large {
+  margin: 0 auto;
+  height: 400px;
+  width: 800px;
 }
 
 #index_background {
@@ -30,7 +38,11 @@
   display:inline;
 }
 
-#map img{
+#map_large img{
+  max-width: inherit;
+}
+
+#map_small img{
   max-width: inherit;
 }
 
@@ -82,6 +94,12 @@
 }
 
 #search_city_shows {
+  text-decoration: none;
+  list-style-type: none;
+  text-align: center;
+}
+
+#search_city_bands {
   text-decoration: none;
   list-style-type: none;
   text-align: center;

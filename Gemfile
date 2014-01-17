@@ -17,6 +17,7 @@ gem 'foundation-rails'
 gem 'compass'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'font-awesome-rails'
 
 
 # Gems used only for assets and not required

@@ -1,0 +1,13 @@
+<%= form_for @band do |f| %>
+  <%= f.text_field :name, placeholder: "Band Name" %>
+  <%= f.text_field :genre, placeholder: "Band Genre" %>
+  <%= f.text_field :hometown_city, placeholder: "Hometown City" %>
+  <%= f.text_field :hometown_state, placeholder: "Hometown State" %>
+  <%= f.text_field :image_url, placeholder: "URL for Band Image" %>
+  <%= f.text_field :website, placeholder: "URL for Band Website" %>
+  <% if @band.id %>
+  <%= f.submit "Edit Band", :class => "small button" %>
+  <% else %>
+  <%= f.submit "Add Band", :class => "small button" %>
+  <% end %>
+  <% end %>

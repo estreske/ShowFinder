@@ -1,12 +1,15 @@
 class ShowsController < ApplicationController 
 
   def new
+    @show = Show.new
+    @bands = Band.where(user_id: current_user.id)
+    @venue = Venue.new
   end
 
   def create
-    band = Band.find(params[:band])
-    venue = Venue.find_or_create_by_name_and_street_and_city_and_zipcode(name: params[:venue_name], street: params[:venue_street], city: params[:venue_city], state: params[:venue_state], zipcode: params[:venue_zipcode])
-    Show.create(date: params[:date], time: params[:time], slots_open: params[:slots_open], band: band, venue: venue)
+    band = Band.find(params[:band][:band_id])
+    venue = Venue.find_or_create_by_name_and_street_and_city_and_zipcode(name: params[:venue][:name], street: params[:venue][:street], city: params[:venue][:city], state: params[:venue][:state], zipcode: params[:venue][:zipcode])
+    Show.create(date: params[:show][:date], time: params[:show][:time], slots_open: params[:show][:slots_open], band: band, venue: venue)
     redirect_to '/profile'
   end
 
@@ -54,23 +57,25 @@ class ShowsController < ApplicationController
 
   def edit 
     @show = Show.find(params[:id])
+    @bands = Band.where(user_id: current_user.id)
+    @venue = Venue.find(@show.venue.id)
   end
 
   def update
     @show = Show.find(params[:id])
-    band = Band.find(params[:band])
-    venue = Venue.find(@show.venue.id)
-    venue.name = params[:venue_name]
-    venue.street = params[:venue_street]
-    venue.city = params[:venue_city]
-    venue.state = params[:venue_state]
-    venue.zipcode = params[:venue_zipcode]
-    venue.save
-    @show.date = params[:date]
-    @show.time = params[:time]
-    @show.slots_open = params[:slots_open]
-    @show.band = band
-    @show.venue = venue
+    @band = Band.find(params[:band][:band_id])
+    @venue = Venue.find(@show.venue.id)
+    @venue.name = params[:venue][:name]
+    @venue.street = params[:venue][:street]
+    @venue.city = params[:venue][:city]
+    @venue.state = params[:venue][:state]
+    @venue.zipcode = params[:venue][:zipcode]
+    @venue.save!
+    @show.date = params[:show][:date]
+    @show.time = params[:show][:time]
+    @show.slots_open = params[:show][:slots_open]
+    @show.band = @band
+    @show.venue = @venue
     @show.save!
 
     redirect_to '/profile'

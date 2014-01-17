@@ -1,20 +1,6 @@
 <div class="small-4 small-centered columns white_bg">
   <h1>Edit Band</h1>
-<form action="/bands/<%= @band.id %>" method="POST">
-  <input type="hidden" name="_method" value="PUT">
-  <p>Band Name</p>
-  <input type="text" name="name" value="<%= @band.name %>">
-  <p>Genre</p>
-  <input type="text" name="genre" value="<%= @band.genre %>">
-  <p>Hometown City</p>
-  <input type="text" name="hometown_city" value="<%= @band.hometown_city %>">
-  <p>Hometown State</p>
-  <input type="text" name="hometown_state" value="<%= @band.hometown_state %>">
-  <p>Band Image URL</p>
-  <input type="text" name="image_url" value="<%= @band.image_url %>">
-  <p>Band Website</p>
-  <input type="text" name="website" value="<%= @band.website %>">
-  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-  <button class="small button">Edit Band</button>
-</form>
+
+<%= render partial: 'form', locals: { band: @band } %>
 </div>
+

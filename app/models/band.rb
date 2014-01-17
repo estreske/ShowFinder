@@ -4,4 +4,6 @@ class Band < ActiveRecord::Base
   belongs_to :user
   has_many :shows
 
+  validates :name, :hometown_state, :hometown_city, :genre, :website, presence: true
+
 end

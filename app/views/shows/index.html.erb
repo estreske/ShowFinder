@@ -5,7 +5,7 @@
    window.onload=function(){
         handler = Gmaps.build('Google', { markers: { clusterer: {gridSize: 40,
             maxZoom: 1,}}});
-        handler.buildMap({ provider: { center: new google.maps.LatLng(<%= @center_lat %>,<%= @center_long %>), zoom: <%= @zoom %>  }, internal: {id: 'map'}}, function(){
+        handler.buildMap({ provider: { center: new google.maps.LatLng(<%= @center_lat %>,<%= @center_long %>), zoom: <%= @zoom %>  }, internal: {id: 'map_large'}}, function(){
           markers = handler.addMarkers(<%= raw @hash.to_json %>);
         });
       };
@@ -16,4 +16,5 @@
 </div>
 
 <div class="white_bg">
-  <div class= "large-8 large-centered columns" id="map" style='width: 800px; height: 400px;'></div></div>
+  <div class= "large-8 large-centered columns" id="map_large"></div>
+</div>

@@ -1,20 +1,6 @@
 <div class="large-4 large-centered columns white_bg">
 <h1>Add a Show</h1>
-<form action="/shows" method="POST">
-  <input type="text" name="date" placeholder="Date of Show ex. 2014-01-01">
-  <input type="text" name="time" placeholder="Time of Show">
-  <input type="number" name="slots_open" placeholder="Number of Slots open">
-  <select name="band">
-  <% current_user.bands.each do |band| %>
-    <option value="<%= band.id %>"><%= band.name %></option>
-      <% end %>
-    </select>
-  <input type="text" name="venue_name" placeholder="Venue Name">
-  <input type="text" name="venue_street" placeholder="Venue Address">
-  <input type="text" name="venue_city" placeholder="Venue City">
-  <input type="text" name="venue_state" placeholder="Venue State">
-  <input type="text" name="venue_zipcode" placeholder="Venue Zipcode">
-  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-  <button>Create Show</button>
-</form>
-</div>
+ 
+<%= render partial: 'form', locals: { show: @show, bands: @bands, venue: @venue } %>
+
+ </div>

@@ -1,0 +1,18 @@
+<%= form_for(@show) do |f| %>
+  <%= f.text_field :date, placeholder: "Date" %>
+  <%= f.text_field :time, placeholder: "Time" %>
+  <%= f.number_field :slots_open, placeholder: "Number of Slots Open" %>
+  <%= collection_select(:band, :band_id, @bands, :id, :name) %>
+  <%= form_for(@venue) do |f| %>
+  <%= f.text_field :name, placeholder: "Venue Name" %>
+  <%= f.text_field :street, placeholder: "Venue Street" %>
+  <%= f.text_field :city, placeholder: "Venue City" %>
+  <%= f.text_field :state, placeholder: "Venue State" %>
+  <%= f.text_field :zipcode, placeholder: "Venue Zipcode" %>
+  <% if @show.id %>
+  <%= f.submit "Edit Show", class: "small button" %>
+  <% else %>
+  <%= f.submit "Add Show", class: "small button" %>
+  <% end %>
+  <% end %>
+<% end %>

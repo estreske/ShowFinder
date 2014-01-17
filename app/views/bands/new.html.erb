@@ -1,13 +1,6 @@
 <div class="small-4 small-centered columns white_bg">
-<h1>Add a Band</h1>
-<form action="/bands" method="POST">
-  <input type="text" name="name" placeholder="Band Name">
-  <input type="text" name="genre" placeholder="Band Genre">
-  <input type="text" name="hometown_city" placeholder="Hometown City">
-  <input type="text" name="hometown_state" placeholder="Hometown State">
-  <input type="text" name="image_url" placeholder="URL for Band Image">
-  <input type="text" name="website" placeholder="URL for Band Website">
-  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-  <button class="small button">Add Band</button>
-</form>
+  <h1>Add a Band</h1>
+
+<%= render 'form' %>
+
 </div>

@@ -3,14 +3,14 @@ class BandsController < ApplicationController
   # skip_before_filter :verify_authenticity_token
   
   def new
+    @band = Band.new
   end
 
   def create 
-
-    Band.create(name: params[:name], genre: params[:genre], hometown_city: params[:hometown_city], hometown_state: params[:hometown_state], image_url: params[:image_url], website: params[:website], user: current_user)
-
+    @band = Band.new(params[:band])
+    @band.user = current_user
+    @band.save!
     redirect_to '/profile'
-
   end
 
   def edit 
@@ -19,13 +19,7 @@ class BandsController < ApplicationController
 
   def update
     band = Band.find(params[:id])
-    band.name = params[:name]
-    band.genre = params[:genre]
-    band.hometown_city = params[:hometown_city]
-    band.hometown_state = params[:hometown_state]
-    band.image_url = params[:image_url]
-    band.website = params[:website]
-    band.save!
+    band.update_attributes(params[:band])
     redirect_to '/profile'
   end
 
