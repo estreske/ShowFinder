@@ -27,15 +27,17 @@ class ShowsController < ApplicationController
   end
 
   def city
-    @venues = Venue.where(city: params[:search_city], state: params[:search_state])
+    search_city = params[:search_city].split(" ").map(&:capitalize).join(" ")
+    search_state = params[:search_state].split("").map(&:capitalize).join("")
+    @venues = Venue.where(city: search_city, state: search_state)
       @shows = [] 
         @venues.each do |venue|
           show = Show.where(venue_id: venue.id)
           @shows << show
           @shows.flatten!
         end
-      @city_bands = Band.where(hometown_city: params[:search_city], hometown_state: params[:search_state])
-      @city = "#{params[:search_city]}, #{params[:search_state]}"
+      @city_bands = Band.where(hometown_city: search_city, hometown_state: search_state)
+      @city = "#{search_city}, #{search_state}"
       @center_lat = Geocoder.search(@city)[0].latitude
       @center_long = Geocoder.search(@city)[0].longitude
       @zoom = 10
