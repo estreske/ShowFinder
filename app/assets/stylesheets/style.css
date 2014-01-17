@@ -105,6 +105,10 @@
   text-align: center;
 }
 
+#search_city_bands ul {
+  list-style-type: none;
+}
+
 #search_city_shows a {
   font-size: 1.2em;
   text-decoration: none;
