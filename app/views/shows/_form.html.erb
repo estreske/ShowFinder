@@ -1,5 +1,5 @@
 <%= form_for(@show) do |f| %>
-  <%= f.text_field :date, placeholder: "Date" %>
+  <%= f.text_field :date, placeholder: "Date ex. 2014-01-01" %>
   <%= f.text_field :time, placeholder: "Time" %>
   <%= f.number_field :slots_open, placeholder: "Number of Slots Open" %>
   <%= collection_select(:band, :band_id, @bands, :id, :name) %>
